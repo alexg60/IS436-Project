@@ -2,8 +2,8 @@
 ## IS 436 -- Team G
 <p align="center">
     <img src="images/companylogo.JPG" width="50%">
-    <img src="images/readmeimage.jpeg" width="50%">
 </p>
+
 ## Project Overview
 This project is a centralizd IT ticketing system and asset management system for Summit Ridge Clothing Company
 
