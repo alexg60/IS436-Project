@@ -1,6 +1,8 @@
 # IT Ticketing and Asset Management System 
 ## IS 436 -- Team G
 
+![Ticketing Support System https://www.cflowapps.com/support-ticketing-system/](images/readmeimage.jpeg)
+
 ## Project Overview
 This project is a centralizd IT ticketing system and asset management system for Summit Ridge Clothing Company
 
