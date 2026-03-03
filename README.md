@@ -1,6 +1,6 @@
 # IT Ticketing and Asset Management System 
 ## IS 436 -- Team G
-
+![Company Logo](images/companylogo.JPG)
 ![Ticketing Support System https://www.cflowapps.com/support-ticketing-system/](images/readmeimage.jpeg)
 
 ## Project Overview
