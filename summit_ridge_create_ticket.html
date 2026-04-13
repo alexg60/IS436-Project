@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Ticket | Summit Ridge</title>
+  <link rel="stylesheet" href="./summit_ridge_it_ticketing_homepage.css" />
+</head>
+<body>
+  <div class="ticket-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-copy">
+          <span>Summit Ridge</span>
+          <strong>Create Support Ticket</strong>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <p class="topbar-note">Ticket intake form mapped to the internal support database.</p>
+        <a href="./summit_ridge_it_ticketing_homepage.html" class="login-btn">Back Home</a>
+      </div>
+    </header>
+
+    <section class="ticket-layout">
+      <aside class="panel ticket-side ticket-side-issue">
+        <div class="ticket-side-copy">
+          <span class="eyebrow">Ticket Intake</span>
+          <h1>Report an issue clearly and route it faster.</h1>
+          <p class="section-text">
+            This form captures the fields needed to create a new row in the `tickets` table, while timestamps
+            and the default `Open` status are handled automatically by the database.
+          </p>
+        </div>
+      </aside>
+
+      <section class="panel ticket-form-panel">
+        <div class="ticket-form-header">
+          <span class="eyebrow">New Request</span>
+          <h2 class="section-title">Create a support ticket</h2>
+        </div>
+
+        <form class="ticket-form" action="#" method="post">
+          <input type="hidden" name="status" value="Open" />
+
+          <div class="field-group">
+            <label for="title" class="required-label">Title <span class="required-mark">*</span></label>
+            <input id="title" name="title" type="text" maxlength="200" placeholder="Short summary of the issue" required />
+          </div>
+
+          <div class="field-group">
+            <label for="description" class="required-label">Description <span class="required-mark">*</span></label>
+            <textarea id="description" name="description" placeholder="Describe the issue, impact, and any troubleshooting already tried" required></textarea>
+          </div>
+
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="category_id" class="required-label">Category ID <span class="required-mark">*</span></label>
+              <input id="category_id" name="category_id" type="number" min="1" placeholder="Category reference ID" required />
+            </div>
+
+            <div class="field-group">
+              <label for="priority" class="required-label">Priority <span class="required-mark">*</span></label>
+              <select id="priority" name="priority" required>
+                <option value="">Select priority</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Critical">Critical</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="submitted_by" class="required-label">Submitted By User ID <span class="required-mark">*</span></label>
+              <input id="submitted_by" name="submitted_by" type="number" min="1" placeholder="Employee user ID" required />
+            </div>
+
+            <div class="field-group">
+              <label for="assigned_to">Assigned To User ID</label>
+              <input id="assigned_to" name="assigned_to" type="number" min="1" placeholder="Optional support user ID" />
+            </div>
+
+            <div class="field-group">
+              <label for="store_location">Store Location</label>
+              <input id="store_location" name="store_location" type="text" maxlength="100" placeholder="Store, warehouse, or office" />
+            </div>
+
+            <div class="field-group">
+              <label for="device_type">Device Type</label>
+              <input id="device_type" name="device_type" type="text" maxlength="100" placeholder="POS, scanner, laptop, printer" />
+            </div>
+
+            <div class="field-group">
+              <label for="device_id">Device ID</label>
+              <input id="device_id" name="device_id" type="text" maxlength="100" placeholder="Asset tag or serial number" />
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button type="submit" class="btn btn-primary">Create Ticket</button>
+            <a href="./summit_ridge_it_ticketing_homepage.html" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </section>
+    </section>
+  </div>
+</body>
+</html>

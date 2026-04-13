@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Tickets | Summit Ridge</title>
+  <link rel="stylesheet" href="./summit_ridge_it_ticketing_homepage.css" />
+</head>
+<body>
+  <div class="tickets-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-copy">
+          <span>Summit Ridge</span>
+          <strong>My Tickets</strong>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <p class="topbar-note">This page will later show only tickets tied to the logged-in employee.</p>
+        <a href="./summit_ridge_it_ticketing_homepage.html" class="login-btn">Back Home</a>
+      </div>
+    </header>
+
+    <section class="panel tickets-hero">
+      <div class="tickets-hero-card">
+        <span class="eyebrow">Ticket View</span>
+        <h1>Track the requests assigned to you or submitted by you.</h1>
+        <p class="section-text">
+          For now, this page shows sample ticket data. Later it can be connected to the database and filtered to the current user.
+        </p>
+      </div>
+    </section>
+
+    <section class="tickets-summary">
+      <div class="summary-card">
+        <strong>6</strong>
+        <span>Visible sample tickets</span>
+      </div>
+      <div class="summary-card">
+        <strong>2</strong>
+        <span>Currently in progress</span>
+      </div>
+      <div class="summary-card">
+        <strong>1</strong>
+        <span>Awaiting follow-up</span>
+      </div>
+    </section>
+
+    <section class="panel tickets-panel">
+      <span class="eyebrow">Available Tickets</span>
+      <h2 class="section-title">Example results for one user</h2>
+      <div class="ticket-table-wrap">
+        <table class="ticket-table">
+          <thead>
+            <tr>
+              <th>Ticket</th>
+              <th>Status</th>
+              <th>Priority</th>
+              <th>Category</th>
+              <th>Location</th>
+              <th>Device</th>
+              <th>Updated</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <span class="ticket-title">#1048 POS terminal freezes during checkout</span>
+                <span class="ticket-subtext">Submitted by user 21 • assigned to user 6</span>
+              </td>
+              <td><span class="pill pill-progress">In Progress</span></td>
+              <td><span class="pill pill-high">High</span></td>
+              <td>Store Systems</td>
+              <td>Columbia Pike</td>
+              <td>POS-14</td>
+              <td>Apr 6, 2026 2:18 PM</td>
+            </tr>
+            <tr>
+              <td>
+                <span class="ticket-title">#1044 Adobe Illustrator access for design intern</span>
+                <span class="ticket-subtext">Submitted by user 21 • unassigned</span>
+              </td>
+              <td><span class="pill pill-open">Open</span></td>
+              <td><span class="pill pill-medium">Medium</span></td>
+              <td>Software Access</td>
+              <td>HQ</td>
+              <td>N/A</td>
+              <td>Apr 6, 2026 11:03 AM</td>
+            </tr>
+            <tr>
+              <td>
+                <span class="ticket-title">#1039 Scanner battery failure in back stock room</span>
+                <span class="ticket-subtext">Submitted by user 21 • assigned to user 9</span>
+              </td>
+              <td><span class="pill pill-pending">Pending</span></td>
+              <td><span class="pill pill-high">High</span></td>
+              <td>Hardware</td>
+              <td>Towson Town Center</td>
+              <td>SCAN-22</td>
+              <td>Apr 5, 2026 4:42 PM</td>
+            </tr>
+            <tr>
+              <td>
+                <span class="ticket-title">#1033 Password reset for shared fitting room iPad</span>
+                <span class="ticket-subtext">Submitted by user 21 • assigned to user 4</span>
+              </td>
+              <td><span class="pill pill-resolved">Resolved</span></td>
+              <td><span class="pill pill-medium">Medium</span></td>
+              <td>Account Access</td>
+              <td>Annapolis Mall</td>
+              <td>IPAD-08</td>
+              <td>Apr 4, 2026 9:15 AM</td>
+            </tr>
+            <tr>
+              <td>
+                <span class="ticket-title">#1028 Printer offline in receiving area</span>
+                <span class="ticket-subtext">Submitted by user 21 • assigned to user 7</span>
+              </td>
+              <td><span class="pill pill-progress">In Progress</span></td>
+              <td><span class="pill pill-low">Low</span></td>
+              <td>Hardware</td>
+              <td>Distribution Center</td>
+              <td>PRN-03</td>
+              <td>Apr 3, 2026 1:27 PM</td>
+            </tr>
+            <tr>
+              <td>
+                <span class="ticket-title">#1017 VPN setup for regional field rep</span>
+                <span class="ticket-subtext">Submitted by user 21 • assigned to user 5</span>
+              </td>
+              <td><span class="pill pill-resolved">Resolved</span></td>
+              <td><span class="pill pill-critical">Critical</span></td>
+              <td>Network Access</td>
+              <td>Field Team</td>
+              <td>LAP-77</td>
+              <td>Apr 1, 2026 8:06 AM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>
