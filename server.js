@@ -332,6 +332,60 @@ app.post("/api/licenses", async (req, res) => {
   }
 });
 
+app.patch("/api/licenses/:licenseId", async (req, res) => {
+  const licenseId = Number(req.params.licenseId);
+  const requesterId = Number(req.body.updated_by);
+  const totalSeats = Number(req.body.total_seats);
+  const seatsInUse = Number(req.body.seats_in_use);
+
+  if (!licenseId || !requesterId) {
+    return res.status(400).json({ error: "licenseId and updated_by are required." });
+  }
+
+  if (!Number.isInteger(totalSeats) || !Number.isInteger(seatsInUse) || totalSeats < 0 || seatsInUse < 0) {
+    return res.status(400).json({ error: "Seat counts must be whole numbers of zero or more." });
+  }
+
+  if (seatsInUse > totalSeats) {
+    return res.status(400).json({ error: "Seats in use cannot be greater than total seats." });
+  }
+
+  try {
+    await requireAdmin(requesterId);
+
+    const [result] = await pool.query(
+      `UPDATE licenses
+       SET total_seats = ?,
+           seats_in_use = ?
+       WHERE license_id = ?`,
+      [totalSeats, seatsInUse, licenseId]
+    );
+
+    if (!result.affectedRows) {
+      return res.status(404).json({ error: "License not found." });
+    }
+
+    const [rows] = await pool.query(
+      `SELECT
+         license_id,
+         software_name,
+         vendor,
+         total_seats,
+         seats_in_use,
+         expiry_date,
+         purchased_date,
+         notes
+       FROM licenses
+       WHERE license_id = ?`,
+      [licenseId]
+    );
+
+    res.json(rows[0]);
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ error: error.message });
+  }
+});
+
 app.get("/api/tickets", async (req, res) => {
   try {
     const filters = [];
@@ -489,6 +543,72 @@ app.patch("/api/tickets/:ticketId/status", async (req, res) => {
     res.json(rows[0]);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  }
+});
+
+app.delete("/api/tickets/:ticketId", async (req, res) => {
+  const ticketId = Number(req.params.ticketId);
+  const requesterId = Number(req.query.user_id);
+
+  if (!ticketId || !requesterId) {
+    return res.status(400).json({ error: "ticketId and user_id are required." });
+  }
+
+  try {
+    await requireAdmin(requesterId);
+
+    await pool.query(
+      `DELETE FROM comments
+       WHERE ticket_id = ?`,
+      [ticketId]
+    );
+
+    await pool.query(
+      `DELETE FROM ticket_status
+       WHERE ticket_id = ?`,
+      [ticketId]
+    );
+
+    const [result] = await pool.query(
+      `DELETE FROM tickets
+       WHERE ticket_id = ?`,
+      [ticketId]
+    );
+
+    if (!result.affectedRows) {
+      return res.status(404).json({ error: "Ticket not found." });
+    }
+
+    res.json({ ok: true });
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ error: error.message });
+  }
+});
+
+app.delete("/api/assets/:assetId", async (req, res) => {
+  const assetId = Number(req.params.assetId);
+  const requesterId = Number(req.query.user_id);
+
+  if (!assetId || !requesterId) {
+    return res.status(400).json({ error: "assetId and user_id are required." });
+  }
+
+  try {
+    await requireAdmin(requesterId);
+
+    const [result] = await pool.query(
+      `DELETE FROM assets
+       WHERE asset_id = ?`,
+      [assetId]
+    );
+
+    if (!result.affectedRows) {
+      return res.status(404).json({ error: "Asset not found." });
+    }
+
+    res.json({ ok: true });
+  } catch (error) {
+    res.status(error.statusCode || 500).json({ error: error.message });
   }
 });
 

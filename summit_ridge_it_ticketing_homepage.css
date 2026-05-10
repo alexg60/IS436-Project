@@ -204,6 +204,10 @@ h1,
   background: rgba(245, 240, 229, 0.05);
 }
 
+.hero-actions [href="./summit_ridge_assets.html"] {
+  min-width: 374px;
+}
+
 .is-locked {
   opacity: 0.88;
   position: relative;
@@ -749,6 +753,39 @@ h1,
   padding: 10px 14px;
 }
 
+.btn-danger {
+  background: rgba(171, 72, 72, 0.18);
+  border-color: rgba(171, 72, 72, 0.34);
+  color: #ffd8d8;
+}
+
+.btn-danger:hover {
+  background: rgba(171, 72, 72, 0.28);
+  border-color: rgba(171, 72, 72, 0.48);
+}
+
+.table-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.table-number-input {
+  width: 92px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(240, 231, 214, 0.12);
+  background: rgba(245, 240, 229, 0.06);
+  color: var(--text);
+  font: inherit;
+}
+
+.table-number-input:focus {
+  outline: none;
+  border-color: rgba(213, 165, 91, 0.55);
+  box-shadow: 0 0 0 4px rgba(213, 165, 91, 0.12);
+}
+
 @media (max-width: 900px) {
   .topbar,
   .topbar-right,
@@ -825,6 +862,10 @@ h1,
   .btn,
   .login-btn {
     width: 100%;
+  }
+
+  .hero-actions [href="./summit_ridge_assets.html"] {
+    min-width: 100%;
   }
 
   h1,

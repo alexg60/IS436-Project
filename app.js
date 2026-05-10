@@ -276,6 +276,30 @@
     });
   }
 
+  async function deleteTicket(ticketId, userId) {
+    return fetchJson(`/api/tickets/${ticketId}?user_id=${encodeURIComponent(userId)}`, {
+      method: "DELETE"
+    });
+  }
+
+  async function deleteAsset(assetId, userId) {
+    return fetchJson(`/api/assets/${assetId}?user_id=${encodeURIComponent(userId)}`, {
+      method: "DELETE"
+    });
+  }
+
+  async function updateLicenseSeats(licenseId, totalSeats, seatsInUse, userId) {
+    return fetchJson(`/api/licenses/${licenseId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        total_seats: totalSeats,
+        seats_in_use: seatsInUse,
+        updated_by: userId
+      })
+    });
+  }
+
   async function initTicketsPage() {
     const tableBody = document.querySelector("[data-ticket-table-body]");
     if (!tableBody) return;
@@ -356,7 +380,10 @@
           <td>${escapeHtml(formatDate(ticket.updated_at))}</td>
           ${isAdmin ? `
             <td>
-              <button class="btn btn-secondary btn-small" data-status-save="${ticket.ticket_id}">Save</button>
+              <div class="table-actions">
+                <button class="btn btn-secondary btn-small" data-status-save="${ticket.ticket_id}">Save</button>
+                <button class="btn btn-danger btn-small" data-ticket-delete="${ticket.ticket_id}">Remove</button>
+              </div>
             </td>
           ` : ""}
         </tr>
@@ -378,6 +405,25 @@
               alert(error.message);
               button.disabled = false;
               button.textContent = "Save";
+            }
+          });
+        });
+
+        tableBody.querySelectorAll("[data-ticket-delete]").forEach((button) => {
+          button.addEventListener("click", async () => {
+            const ticketId = button.getAttribute("data-ticket-delete");
+            const confirmed = window.confirm(`Remove ticket #${ticketId}? This cannot be undone.`);
+            if (!confirmed) return;
+
+            try {
+              button.disabled = true;
+              button.textContent = "Removing...";
+              await deleteTicket(ticketId, user.user_id);
+              await initTicketsPage();
+            } catch (error) {
+              alert(error.message);
+              button.disabled = false;
+              button.textContent = "Remove";
             }
           });
         });
@@ -450,8 +496,30 @@
           <td>${escapeHtml(asset.store_location || "N/A")}</td>
           <td><span class="pill ${assetStatusClass(asset.status)}">${escapeHtml(asset.status)}</span></td>
           <td>${escapeHtml(asset.warranty_expiry || "N/A")}</td>
+          <td>
+            <button class="btn btn-danger btn-small" data-asset-delete="${asset.asset_id}">Remove</button>
+          </td>
         </tr>
       `).join("");
+
+      tableBody.querySelectorAll("[data-asset-delete]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const assetId = button.getAttribute("data-asset-delete");
+          const confirmed = window.confirm(`Remove asset #${assetId}? This cannot be undone.`);
+          if (!confirmed) return;
+
+          try {
+            button.disabled = true;
+            button.textContent = "Removing...";
+            await deleteAsset(assetId, user.user_id);
+            await initAssetsPage();
+          } catch (error) {
+            alert(error.message);
+            button.disabled = false;
+            button.textContent = "Remove";
+          }
+        });
+      });
     } catch (error) {
       if (emptyState) {
         emptyState.hidden = false;
@@ -512,14 +580,80 @@
               <span class="ticket-subtext">${escapeHtml(license.notes || "No notes")}</span>
             </td>
             <td>${escapeHtml(license.vendor || "N/A")}</td>
-            <td>${escapeHtml(totalSeats)}</td>
-            <td>${escapeHtml(seatsInUse)}</td>
-            <td>${escapeHtml(availableSeats)}</td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                class="table-number-input"
+                data-license-total="${license.license_id}"
+                value="${escapeHtml(totalSeats)}"
+              />
+            </td>
+            <td>
+              <input
+                type="number"
+                min="0"
+                class="table-number-input"
+                data-license-in-use="${license.license_id}"
+                value="${escapeHtml(seatsInUse)}"
+              />
+            </td>
+            <td><span data-license-available="${license.license_id}">${escapeHtml(availableSeats)}</span></td>
             <td>${escapeHtml(license.expiry_date || "N/A")}</td>
             <td>${escapeHtml(license.purchased_date || "N/A")}</td>
+            <td>
+              <button class="btn btn-secondary btn-small" data-license-save="${license.license_id}">Save</button>
+            </td>
           </tr>
         `;
       }).join("");
+
+      tableBody.querySelectorAll("[data-license-total], [data-license-in-use]").forEach((input) => {
+        input.addEventListener("input", () => {
+          const licenseId = input.getAttribute("data-license-total") || input.getAttribute("data-license-in-use");
+          const totalInput = tableBody.querySelector(`[data-license-total="${licenseId}"]`);
+          const inUseInput = tableBody.querySelector(`[data-license-in-use="${licenseId}"]`);
+          const available = tableBody.querySelector(`[data-license-available="${licenseId}"]`);
+          if (!totalInput || !inUseInput || !available) return;
+
+          const totalValue = Number(totalInput.value || 0);
+          const inUseValue = Number(inUseInput.value || 0);
+          available.textContent = String(totalValue - inUseValue);
+        });
+      });
+
+      tableBody.querySelectorAll("[data-license-save]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const licenseId = button.getAttribute("data-license-save");
+          const totalInput = tableBody.querySelector(`[data-license-total="${licenseId}"]`);
+          const inUseInput = tableBody.querySelector(`[data-license-in-use="${licenseId}"]`);
+          if (!totalInput || !inUseInput) return;
+
+          const totalSeats = Number(totalInput.value);
+          const seatsInUse = Number(inUseInput.value);
+
+          if (!Number.isInteger(totalSeats) || !Number.isInteger(seatsInUse) || totalSeats < 0 || seatsInUse < 0) {
+            alert("Seat counts must be whole numbers of zero or more.");
+            return;
+          }
+
+          if (seatsInUse > totalSeats) {
+            alert("Seats in use cannot be greater than total seats.");
+            return;
+          }
+
+          try {
+            button.disabled = true;
+            button.textContent = "Saving...";
+            await updateLicenseSeats(licenseId, totalSeats, seatsInUse, user.user_id);
+            await initLicensesPage();
+          } catch (error) {
+            alert(error.message);
+            button.disabled = false;
+            button.textContent = "Save";
+          }
+        });
+      });
     } catch (error) {
       if (emptyState) {
         emptyState.hidden = false;
