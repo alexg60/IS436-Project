@@ -118,10 +118,13 @@ body::before {
   text-decoration: none;
   border-radius: 999px;
   font-weight: 700;
+  border: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  font: inherit;
 }
 
 .login-btn:hover,
@@ -199,6 +202,19 @@ h1,
   color: var(--text);
   border: 1px solid rgba(255, 255, 255, 0.14);
   background: rgba(245, 240, 229, 0.05);
+}
+
+.is-locked {
+  opacity: 0.88;
+  position: relative;
+}
+
+.is-locked::after {
+  content: "Login Required";
+  margin-left: 8px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 .main-grid {
@@ -391,6 +407,10 @@ h1,
   font: inherit;
 }
 
+.field-group input[readonly] {
+  opacity: 0.85;
+}
+
 .field-group input::placeholder {
   color: #9c8f7b;
 }
@@ -538,6 +558,49 @@ h1,
   padding: 0;
 }
 
+.assets-hero {
+  background:
+    linear-gradient(rgba(14, 20, 15, 0.24), rgba(14, 20, 15, 0.74)),
+    linear-gradient(90deg, rgba(18, 28, 20, 0.92) 0%, rgba(18, 28, 20, 0.6) 48%, rgba(18, 28, 20, 0.28) 100%),
+    url('./images/trees.avif') center/cover no-repeat;
+}
+
+.licenses-hero {
+  background:
+    linear-gradient(rgba(14, 20, 15, 0.24), rgba(14, 20, 15, 0.74)),
+    linear-gradient(90deg, rgba(18, 28, 20, 0.92) 0%, rgba(18, 28, 20, 0.6) 48%, rgba(18, 28, 20, 0.28) 100%),
+    url('./images/valley.avif') center/cover no-repeat;
+}
+
+.admin-toolbar {
+  margin-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.admin-toolbar-left,
+.admin-toolbar-right {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.add-asset-side {
+  background:
+    linear-gradient(rgba(15, 22, 16, 0.18), rgba(15, 22, 16, 0.78)),
+    linear-gradient(180deg, rgba(16, 24, 17, 0.24), rgba(16, 24, 17, 0.92)),
+    url('./images/deerandmountain.avif') center/cover no-repeat;
+}
+
+.add-license-side {
+  background:
+    linear-gradient(rgba(15, 22, 16, 0.18), rgba(15, 22, 16, 0.78)),
+    linear-gradient(180deg, rgba(16, 24, 17, 0.24), rgba(16, 24, 17, 0.92)),
+    url('./images/starrynight.jpg') center/cover no-repeat;
+}
+
 .tickets-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -659,13 +722,41 @@ h1,
   color: #ffd5d5;
 }
 
+.status-editor {
+  display: grid;
+  gap: 8px;
+}
+
+.status-select {
+  width: 100%;
+  min-width: 150px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid rgba(240, 231, 214, 0.12);
+  background: rgba(245, 240, 229, 0.06);
+  color: var(--text);
+  font: inherit;
+}
+
+.status-select:focus {
+  outline: none;
+  border-color: rgba(213, 165, 91, 0.55);
+  box-shadow: 0 0 0 4px rgba(213, 165, 91, 0.12);
+}
+
+.btn-small {
+  min-width: 96px;
+  padding: 10px 14px;
+}
+
 @media (max-width: 900px) {
   .topbar,
   .topbar-right,
   .main-grid,
   .login-page-shell,
   .ticket-layout,
-  .tickets-summary {
+  .tickets-summary,
+  .admin-toolbar {
     grid-template-columns: 1fr;
   }
 
@@ -696,6 +787,14 @@ h1,
 
   .tickets-hero {
     min-height: 220px;
+  }
+
+  .admin-toolbar {
+    display: grid;
+  }
+
+  .admin-toolbar-right {
+    justify-content: flex-start;
   }
 }
 

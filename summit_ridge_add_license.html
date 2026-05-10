@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add License | Summit Ridge</title>
+  <link rel="stylesheet" href="./summit_ridge_it_ticketing_homepage.css" />
+</head>
+<body data-page="add-license">
+  <div class="ticket-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-copy">
+          <span>Summit Ridge</span>
+          <strong>Add License</strong>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <p class="topbar-note">Admin-only software license intake for compliance tracking.</p>
+        <a href="./summit_ridge_licenses.html" class="login-btn">Back to Licenses</a>
+      </div>
+    </header>
+
+    <section class="ticket-layout">
+      <aside class="panel ticket-side add-license-side">
+        <div class="ticket-side-copy">
+          <span class="eyebrow">License Intake</span>
+          <h1>Add a software license record.</h1>
+          <p class="section-text">Track vendor seats, expiration dates, and usage across Summit Ridge teams.</p>
+        </div>
+      </aside>
+
+      <section class="panel ticket-form-panel">
+        <div class="ticket-form-header">
+          <span class="eyebrow">New License</span>
+          <h2 class="section-title">Add license details</h2>
+          <p class="section-text" data-admin-form-empty hidden></p>
+        </div>
+
+        <form class="ticket-form" data-license-form="true">
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="software_name" class="required-label">Software Name <span class="required-mark">*</span></label>
+              <input id="software_name" name="software_name" type="text" maxlength="150" placeholder="Software name" required />
+            </div>
+
+            <div class="field-group">
+              <label for="vendor">Vendor</label>
+              <input id="vendor" name="vendor" type="text" maxlength="100" placeholder="Vendor name" />
+            </div>
+
+            <div class="field-group">
+              <label for="license_key">License Key</label>
+              <input id="license_key" name="license_key" type="text" maxlength="200" placeholder="License key" />
+            </div>
+
+            <div class="field-group">
+              <label for="total_seats">Total Seats</label>
+              <input id="total_seats" name="total_seats" type="number" min="1" placeholder="Total seats" />
+            </div>
+
+            <div class="field-group">
+              <label for="seats_in_use">Seats In Use</label>
+              <input id="seats_in_use" name="seats_in_use" type="number" min="0" placeholder="Seats in use" />
+            </div>
+
+            <div class="field-group">
+              <label for="expiry_date">Expiry Date</label>
+              <input id="expiry_date" name="expiry_date" type="date" />
+            </div>
+
+            <div class="field-group">
+              <label for="purchased_date">Purchased Date</label>
+              <input id="purchased_date" name="purchased_date" type="date" />
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="notes">Notes</label>
+            <textarea id="notes" name="notes" placeholder="Renewal notes, team usage, or contract details"></textarea>
+          </div>
+
+          <div class="button-row">
+            <button type="submit" class="btn btn-primary">Add License</button>
+            <a href="./summit_ridge_licenses.html" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </section>
+    </section>
+  </div>
+</body>
+<script src="./app.js"></script>
+</html>

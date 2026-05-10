@@ -6,7 +6,7 @@
   <title>Summit Ridge IT Ticketing System</title>
   <link rel="stylesheet" href="./summit_ridge_it_ticketing_homepage.css" />
 </head>
-<body>
+<body data-page="home">
   <div class="page-shell">
     <header class="topbar">
       <div class="brand">
@@ -18,7 +18,7 @@
       </div>
       <div class="topbar-right">
         <p class="topbar-note">Support for stores, warehouse teams, field staff, and headquarters.</p>
-        <a href="./summit_ridge_it_login.html" class="login-btn">Login</a>
+        <a href="./summit_ridge_it_login.html" class="login-btn" data-auth-button="true">Login</a>
       </div>
     </header>
 
@@ -31,8 +31,9 @@
           designed for an outdoor clothing company.
         </p>
         <div class="hero-actions">
-          <a href="./summit_ridge_create_ticket.html" class="btn btn-primary">Submit a Ticket</a>
-          <a href="./summit_ridge_my_tickets.html" class="btn btn-secondary">Track a Ticket</a>
+          <a href="./summit_ridge_create_ticket.html" class="btn btn-primary" data-protected-link="true">Submit a Ticket</a>
+          <a href="./summit_ridge_my_tickets.html" class="btn btn-secondary" data-protected-link="true">Track a Ticket</a>
+          <a href="./summit_ridge_assets.html" class="btn btn-secondary" data-admin-only="true" hidden>Track Assets</a>
         </div>
       </div>
     </section>
@@ -89,4 +90,5 @@
     </footer>
   </div>
 </body>
+<script src="./app.js"></script>
 </html>

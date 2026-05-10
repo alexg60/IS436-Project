@@ -1,0 +1,14 @@
+{
+  "name": "summit-ridge-it-portal",
+  "version": "1.0.0",
+  "description": "Summit Ridge internal IT helpdesk portal",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.6.1",
+    "express": "^5.1.0",
+    "mysql2": "^3.15.3"
+  }
+}

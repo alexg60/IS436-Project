@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Asset | Summit Ridge</title>
+  <link rel="stylesheet" href="./summit_ridge_it_ticketing_homepage.css" />
+</head>
+<body data-page="add-asset">
+  <div class="ticket-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-copy">
+          <span>Summit Ridge</span>
+          <strong>Add Asset</strong>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <p class="topbar-note">Admin-only asset creation for the equipment inventory.</p>
+        <a href="./summit_ridge_assets.html" class="login-btn">Back to Assets</a>
+      </div>
+    </header>
+
+    <section class="ticket-layout">
+      <aside class="panel ticket-side add-asset-side">
+        <div class="ticket-side-copy">
+          <span class="eyebrow">Inventory Intake</span>
+          <h1>Add a new tracked device.</h1>
+          <p class="section-text">Create inventory records for laptops, POS terminals, scanners, printers, tablets, and other equipment.</p>
+        </div>
+      </aside>
+
+      <section class="panel ticket-form-panel">
+        <div class="ticket-form-header">
+          <span class="eyebrow">New Asset</span>
+          <h2 class="section-title">Add asset details</h2>
+          <p class="section-text" data-admin-form-empty hidden></p>
+        </div>
+
+        <form class="ticket-form" data-asset-form="true">
+          <div class="form-grid">
+            <div class="field-group">
+              <label for="asset_name" class="required-label">Asset Name <span class="required-mark">*</span></label>
+              <input id="asset_name" name="asset_name" type="text" maxlength="100" placeholder="Asset name or tag" required />
+            </div>
+
+            <div class="field-group">
+              <label for="device_type" class="required-label">Device Type <span class="required-mark">*</span></label>
+              <select id="device_type" name="device_type" required>
+                <option value="">Select type</option>
+                <option value="Laptop">Laptop</option>
+                <option value="POS Terminal">POS Terminal</option>
+                <option value="Tablet">Tablet</option>
+                <option value="Scanner">Scanner</option>
+                <option value="Printer">Printer</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="field-group">
+              <label for="make_model">Make / Model</label>
+              <input id="make_model" name="make_model" type="text" maxlength="100" placeholder="Manufacturer and model" />
+            </div>
+
+            <div class="field-group">
+              <label for="serial_number">Serial Number</label>
+              <input id="serial_number" name="serial_number" type="text" maxlength="100" placeholder="Serial number" />
+            </div>
+
+            <div class="field-group">
+              <label for="purchase_date">Purchase Date</label>
+              <input id="purchase_date" name="purchase_date" type="date" />
+            </div>
+
+            <div class="field-group">
+              <label for="warranty_expiry">Warranty Expiry</label>
+              <input id="warranty_expiry" name="warranty_expiry" type="date" />
+            </div>
+
+            <div class="field-group">
+              <label for="assigned_to">Assigned To User ID</label>
+              <input id="assigned_to" name="assigned_to" type="number" min="1" placeholder="Optional user ID" />
+            </div>
+
+            <div class="field-group">
+              <label for="store_location">Store Location</label>
+              <input id="store_location" name="store_location" type="text" maxlength="100" placeholder="Store, warehouse, or office" />
+            </div>
+
+            <div class="field-group">
+              <label for="status">Status</label>
+              <select id="status" name="status">
+                <option value="Active">Active</option>
+                <option value="In Repair">In Repair</option>
+                <option value="Retired">Retired</option>
+                <option value="Missing">Missing</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button type="submit" class="btn btn-primary">Add Asset</button>
+            <a href="./summit_ridge_assets.html" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </section>
+    </section>
+  </div>
+</body>
+<script src="./app.js"></script>
+</html>

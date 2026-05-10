@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>License Tracking | Summit Ridge</title>
+  <link rel="stylesheet" href="./summit_ridge_it_ticketing_homepage.css" />
+</head>
+<body data-page="licenses">
+  <div class="tickets-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-copy">
+          <span>Summit Ridge</span>
+          <strong>License Tracking</strong>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <p class="topbar-note">Admin-only visibility into software licenses, seat usage, and renewal timing.</p>
+        <a href="./summit_ridge_assets.html" class="login-btn">Back to Assets</a>
+      </div>
+    </header>
+
+    <section class="panel tickets-hero licenses-hero">
+      <div class="tickets-hero-card">
+        <span class="eyebrow">License View</span>
+        <h1>Track software license usage across Summit Ridge.</h1>
+        <p class="section-text">Review vendor allocations, renewals, and remaining seats from one admin-only dashboard.</p>
+      </div>
+    </section>
+
+    <section class="admin-toolbar" data-admin-only="true" hidden>
+      <div class="admin-toolbar-left">
+        <a href="./summit_ridge_add_asset.html" class="btn btn-secondary">Add Asset</a>
+        <a href="./summit_ridge_add_license.html" class="btn btn-primary">Add License</a>
+      </div>
+      <div class="admin-toolbar-right">
+        <a href="./summit_ridge_assets.html" class="btn btn-secondary">View Assets</a>
+      </div>
+    </section>
+
+    <section class="panel tickets-panel">
+      <span class="eyebrow">Licenses</span>
+      <h2 class="section-title" data-licenses-heading>All tracked licenses</h2>
+      <p class="section-text" data-licenses-empty hidden></p>
+      <div class="ticket-table-wrap">
+        <table class="ticket-table">
+          <thead>
+            <tr>
+              <th>Software</th>
+              <th>Vendor</th>
+              <th>Seats</th>
+              <th>In Use</th>
+              <th>Available</th>
+              <th>Expiry</th>
+              <th>Purchased</th>
+            </tr>
+          </thead>
+          <tbody data-licenses-table-body></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+<script src="./app.js"></script>
+</html>

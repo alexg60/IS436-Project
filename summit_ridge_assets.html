@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asset Tracking | Summit Ridge</title>
+  <link rel="stylesheet" href="./summit_ridge_it_ticketing_homepage.css" />
+</head>
+<body data-page="assets">
+  <div class="tickets-shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="brand-copy">
+          <span>Summit Ridge</span>
+          <strong>Asset Tracking</strong>
+        </div>
+      </div>
+      <div class="topbar-right">
+        <p class="topbar-note">Admin-only visibility into devices, assignments, and store locations.</p>
+        <a href="./summit_ridge_it_ticketing_homepage.html" class="login-btn">Back Home</a>
+      </div>
+    </header>
+
+    <section class="panel tickets-hero assets-hero">
+      <div class="tickets-hero-card">
+        <span class="eyebrow">Inventory View</span>
+        <h1>Track the hardware assigned across Summit Ridge.</h1>
+        <p class="section-text">
+          This page lists the assets currently available in the system, including assignment, location, and support status.
+        </p>
+      </div>
+    </section>
+
+    <section class="admin-toolbar" data-admin-only="true" hidden>
+      <div class="admin-toolbar-left">
+        <a href="./summit_ridge_add_asset.html" class="btn btn-primary">Add Asset</a>
+        <a href="./summit_ridge_add_license.html" class="btn btn-secondary">Add License</a>
+      </div>
+      <div class="admin-toolbar-right">
+        <a href="./summit_ridge_licenses.html" class="btn btn-secondary">View Licenses</a>
+      </div>
+    </section>
+
+    <section class="panel tickets-panel">
+      <span class="eyebrow">Assets</span>
+      <h2 class="section-title" data-assets-heading>All tracked assets</h2>
+      <p class="section-text" data-assets-empty hidden></p>
+      <div class="ticket-table-wrap">
+        <table class="ticket-table">
+          <thead>
+            <tr>
+              <th>Asset</th>
+              <th>Type</th>
+              <th>Model</th>
+              <th>Assigned To</th>
+              <th>Location</th>
+              <th>Status</th>
+              <th>Warranty</th>
+            </tr>
+          </thead>
+          <tbody data-assets-table-body></tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+<script src="./app.js"></script>
+</html>
