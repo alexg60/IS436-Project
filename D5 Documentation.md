@@ -1,9 +1,7 @@
-
-
 ## User Guide
 ### Logging In
 1. Click on the login button in the top right of the home page
-1.  Enter your username and password
+1. Enter your username and password
 1. Click on the login button
 ### Creating a Ticket
 1. Click on the submit a ticket button on the home page
@@ -28,7 +26,7 @@
 ### Phase 1: Systems Request
 In this phase, the team proposed an a IT ticketing and asset management system for the Summit Ridge Clothing Company
 
-a systems request document was created outlining:
+A systems request document was created outlining:
 - business need
 - business requirements
 - business values
@@ -40,6 +38,7 @@ a systems request document was created outlining:
 
 This phase also established the project sponsor as well as the key shareholders
 
+
 ### Phase 2: Requirements Definition Document and Use Cases
 In this phase, the team created a requirements document and outlined use cases for the system
 
@@ -48,24 +47,44 @@ The key outputs of the requirements document included:
 - Non-functional requirements
 - Interview summaries on people in various positons
 - Observation notes of the existing ("as-is") system
-- Document analysis
+- A document analysis
 
-5 use cases were produced through use case analysis and a diagram was created for each of these use cases
+12 use cases were produced through use case analysis, but a diagram was created for only 5 key use cases
+
 
 ### Phase 3: Project Database Creation
-- 
-- 
-- 
-- 
+During this phase, the team created the project database based on the previously developed use cases
+
+The end products for this phase were:
+- SQL script to intialize the database
+- Database tables
+- SQL inserts for sample data
+- A Docker Compose file so that the database could run in a container
+
+This database is managed through the team's project repository on GitHub
+
 
 ### Phase 4: Data Modeling and Starting Design
-- 
-- 
-- 
-- 
+In this phase, the team expanded the system design by developing the data model and system architecture
+
+Key components include:
+- An ER Diagram in the third normal form (3NF)
+- An alternative matrix for custom development decisions
+- The system architecture design
+- System architecture diagrams
+
+This phase ensures that the system design supports scalability, maintainability, and security requirements
+
 
 ### Phase 5: Closing: User Interface Design, Program design and System Implementation
-- 
-- 
-- 
-- 
+In this final phase, the system was implemented and demonstrated
+
+Deliverables for this phase include: 
+- User interface prototypes for 5 most important screens
+- The creation of functional webpages
+- A UI that stores data matching database tables
+- Forms and reports connected to the database
+- A GitHub repository that contains the full source code for the system
+- Docker Container deployment using GitHub actions and DockerHub
+
+The complete system was put in a container and prepared for live demonstration and user testing
