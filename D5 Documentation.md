@@ -8,7 +8,7 @@ You can use github ReamMe file Markdown file as your user guide documentation. P
 Include your updated project plan that includes all the five phases of your system design
 -->
 
-# Project Plan
+# System Design
 
 ## Phase 1
 
