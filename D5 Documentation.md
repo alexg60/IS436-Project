@@ -21,7 +21,7 @@
 1. Navigate through the licenses displayed on the license list
 1. Information on software name, vendor, total number of seats, seats in use, expiry, date purchased and actions are available on the page for each license 
 
-## Updated Project Plan
+## Project Plan
 
 ### Phase 1: Systems Request
 In this phase, the team proposed an a IT ticketing and asset management system for the Summit Ridge Clothing Company
