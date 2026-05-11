@@ -1,12 +1,4 @@
-<!--
-Documentation
 
-Create user guide documentation for your project and link the document on your application
-OR
-You can use github ReamMe file Markdown file as your user guide documentation. Please follow this video Markdown Crash Course
-
-Include your updated project plan that includes all the five phases of your system design
--->
 
 ## User Guide
 ### Logging In
@@ -31,18 +23,49 @@ Include your updated project plan that includes all the five phases of your syst
 1. Navigate through the licenses displayed on the license list
 1. Information on software name, vendor, total number of seats, seats in use, expiry, date purchased and actions are available on the page for each license 
 
-## Project Plan
+## Updated Project Plan
 
 ### Phase 1: Systems Request
+In this phase, the team proposed an a IT ticketing and asset management system for the Summit Ridge Clothing Company
 
+a systems request document was created outlining:
+- business need
+- business requirements
+- business values
+- special issues and constraints
+- feasibility analysis
+- cost-benefit analysis for a 3-year period
+- project methodology
+- project work plan
+
+This phase also established the project sponsor as well as the key shareholders
 
 ### Phase 2: Requirements Definition Document and Use Cases
+In this phase, the team created a requirements document and outlined use cases for the system
 
+The key outputs of the requirements document included:
+- Functional requirements
+- Non-functional requirements
+- Interview summaries on people in various positons
+- Observation notes of the existing ("as-is") system
+- Document analysis
+
+5 use cases were produced through use case analysis and a diagram was created for each of these use cases
 
 ### Phase 3: Project Database Creation
-
+- 
+- 
+- 
+- 
 
 ### Phase 4: Data Modeling and Starting Design
-
+- 
+- 
+- 
+- 
 
 ### Phase 5: Closing: User Interface Design, Program design and System Implementation
+- 
+- 
+- 
+- 
